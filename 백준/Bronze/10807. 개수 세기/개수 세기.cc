@@ -1,23 +1,25 @@
 #include <bits/stdc++.h>
 using namespace std;
-int a[105];
+multiset<int> a;
 int main(){
     int N,T,cnt=0;
     cin >> N;
-    fill(a,a+105,-1000);
     for(int i=0; i<N; i++){
-        cin >> a[i];
+        int tmp;
+        cin >> tmp;
+        a.insert(tmp);
     }
     cin >> T;
-    for(auto i : a){
-        if(i == -1000){
-            break;
-        }
-        if(i == T){
-            cnt++;
-        }
-    }
-    cout << cnt;
+    cout << a.count(T);
+    // for(auto i : a){
+    //     if(i == -1000){
+    //         break;
+    //     }
+    //     if(i == T){
+    //         cnt++;
+    //     }
+    // }
+    //cout << cnt;
     
     return 0;
 }
