@@ -1,28 +1,33 @@
 #include <bits/stdc++.h>
 using namespace std;
 const int N = 9;
-int a[9];
-int sum=0;
+bool flag = false;
+vector<int> v;
+int num1,num2,sum=0;
 int main(){
-    int N1,N2;
     for(int i=0; i<N; i++){
-        cin >> a[i];
-        sum += a[i];
+        int n;
+        cin >> n;
+        v.push_back(n);
+        sum += n;
     }
-    sort(a,a+9);
+    sort(v.begin(),v.end());
+    // 9개 중에서 2개를 뽑아서 합에서  뺐을때, 100이 되면 정지
     for(int i=0; i<N; i++){
         for(int j=0; j<N; j++){
-            int tmp = sum;
-            if((tmp - a[i] - a[j]) == 100){
-                N1 = i;
-                N2 = j;
-                break;         
+            if(i == j) continue;
+            if(sum - v[i] - v[j] == 100){
+                flag = true;
+                num1 = i;
+                num2 = j;
+                break;
             }
         }
+        if(flag) break;
     }
-    for(auto n : a){
-        if(n == a[N1] or n == a[N2]) continue;
-        cout << n << " ";
+    for(int k=0; k<N; k++){
+        if(k == num1 || k ==num2) continue;
+        cout << v[k] << "\n";
     }
     return 0;
 }
