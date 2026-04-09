@@ -5,26 +5,20 @@ int main(){
     cin >> N;
     while(N--){
         int n;
-        int ans = 0;
         map<string,int> mp;
         cin >> n;
         while(n--){
             string s1,s2;
             cin >> s1 >> s2;
-            auto it = mp.find(s2);
-            if(it != mp.end()){
-                mp[s2]++;
-            }
-            else{
-                mp[s2] =1;
-            }
+            mp[s2]++;
         }
-        int mul = 1;
+        long long mul = 1;
         for(auto it : mp){
-            mul *= (it.second+1);
+            mul *= ((long long)it.second+1); // 아무것도 안 입었을때랑 포함해서 경우를 수를 찾는다.
+            // A,B 두 종류가 있을때, A를 택하지 않을 때, B를 택하지 않을 때.
         }
-        ans = mul -1;
-        cout << ans << "\n";
+        mul--;
+        cout << mul << "\n";
     }
     return 0;
 }
