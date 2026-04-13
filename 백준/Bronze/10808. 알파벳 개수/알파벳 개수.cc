@@ -1,14 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
-int a[26] = {0};
+int a[26];
+string s;
 int main(){
-    string s;
     cin >> s;
-    for(auto i : s){
-        a[(int)i-97]++;
+    for(char c : s){
+        a[c-97]++;
     }
-    for(auto j : a){
-        cout << j << " ";
+    for(int i : a){
+        cout << i << " ";
     }
     return 0;
 }
