@@ -1,21 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
-int a[26];
-int N;
 bool flag = true;
+int N,a[26];
 int main(){
     cin >> N;
-    for(int i=0; i<N; i++){
+    while(N--){
         string s;
         cin >> s;
         a[s[0]-97]++;
     }
-    for(int j=0; j<26; j++){
-        if(a[j] >= 5){
+    for(int i=0; i<26; i++){
+        if(a[i] >= 5) {
             flag = false;
-            cout << char(j+97);
+            cout << char(i+97);
         }
     }
-    if(flag) cout << "PREDAJA";
+    if(flag)cout << "PREDAJA";
     return 0;
 }
