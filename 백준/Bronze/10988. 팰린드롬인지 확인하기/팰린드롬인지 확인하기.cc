@@ -1,18 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
+bool flag = true;
 string s;
-int mid;
-bool flag = false;
 int main(){
     cin >> s;
-    mid = s.size()/2;
-    for(int i=0; i<=mid; i++){
-        if(s[i]-s[s.size()-1-i]){
-            flag = true;
+    int N = s.size();
+    int mid = N/2;
+    for(int i=0; i<mid; i++){
+        if(s[i] != s[N-i-1]){
+            flag = false;
+            cout << 0;
             break;
         }
     }
-    if(flag) cout << "0";
-    else cout << "1";
+    if(flag) cout << 1;
     return 0;
 }
