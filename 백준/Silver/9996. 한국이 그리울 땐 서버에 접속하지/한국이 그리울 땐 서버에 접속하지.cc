@@ -1,33 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
-int N, prefSize, sufSize;
-string pattern,pref,suf;
+int N;
+string p;
+string pref,suf;
 int main(){
     cin >> N;
-    cin >> pattern;
-    auto star = pattern.find("*");
-    
-    pref = pattern.substr(0,star);
-    prefSize = pref.size();
-    suf = pattern.substr(star+1);
-    sufSize = suf.size();
-
-    for(int i=0; i<N; i++){
+    cin >> p;
+    auto it = p.find('*');
+    pref = p.substr(0,it);
+    suf = p.substr(it+1);
+    while(N--){
         string s;
+        bool flag = true;
         cin >> s;
-        //auto sufPos = s.find(suf);
-        //cout << s.substr(0,prefSize) << " " <<  s.substr(s.size()-sufSize,s.size()-1) << "\n";
-        if(s.size() < prefSize + sufSize){
-            cout << "NE\n";
+        if(s.size() < pref.size() + suf.size()){
+            cout << "NE" << "\n";
             continue;
+        } 
+        if(s.substr(0,pref.size()) != pref || s.substr(s.size()-suf.size()) != suf){
+            flag = false;
+            cout << "NE" << "\n";
         }
-        if(s.substr(0,prefSize) == pref && s.substr(s.size()-sufSize) == suf){
-            cout << "DA" << "\n";
-        }
-        else{
-            cout << "NE" <<"\n";
-        }
+        if(flag) cout << "DA" << "\n";
     }
-
     return 0;
 }
