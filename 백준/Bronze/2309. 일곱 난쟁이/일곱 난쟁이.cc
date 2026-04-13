@@ -1,26 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int N = 9;
-vector<int> v;
+int a[9];
 int main(){
-    for(int i =0; i<N; i++){
-        int n;
-        cin >> n;
-        v.push_back(n);        
+    for(int i=0; i<9; i++){
+        cin >> a[i];
     }
-    
-    sort(v.begin(),v.end());
-
+    sort(a,a+9);
     do{
-        int sum = 0;
-        for(int j=0; j<7; j++){
-            sum += v[j];
-        }
-        if(sum == 100){
-            for(int j=0; j<7; j++){
-                cout << v[j] << "\n";
-            }    
+        if(accumulate(a,a+7,0) == 100){
+            for(int i=0; i<7; i++){
+                cout << a[i] << "\n";
+            }
             break;
         }
-    }while(next_permutation(v.begin(),v.end()));
+    }while(next_permutation(a,a+9));
+    return 0;
 }
