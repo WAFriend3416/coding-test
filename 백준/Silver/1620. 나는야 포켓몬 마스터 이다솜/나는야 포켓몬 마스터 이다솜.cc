@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 int N,M;
-map<string,int> mp;
-vector<string> v;
+map<string,int> mp1;
+map<int,string> mp2;
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(NULL);
@@ -10,19 +10,14 @@ int main(){
     for(int i=1; i<=N; i++){
         string s;
         cin >> s;
-        v.push_back(s);
-        mp[s] = i;
+        mp1[s] = i;
+        mp2[i] = s;
     }
     while(M--){
-        string s;
-        cin >> s;
-        if(atoi(s.c_str())){
-            cout << v[stoi(s)-1] << "\n";
-        }
-        else{
-            //cout << "check s : "<< s << "\n";
-            cout << mp[s] << "\n";
-        }
+        string s2;
+        cin >> s2;
+        if(atoi(s2.c_str())) cout << mp2[stoi(s2)] << "\n";
+        else cout << mp1[s2] << "\n";
     }
     return 0;
 }
